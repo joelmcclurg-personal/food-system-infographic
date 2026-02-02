@@ -433,15 +433,72 @@ Revised language throughout to clarify that farmers are victims of the system, n
 
 ---
 
-## Plan: Move Notes to Project Folder
+## Deployment (February 2026)
 
-**Task:** Copy this notes file to the project folder as the canonical version.
+### GitHub Pages Deployment
 
-**Action:**
+**Live URL:** https://joelmcclurg.github.io/food-system-infographic/
+
+**Repository:** https://github.com/joelmcclurg/food-system-infographic
+
+**Deployment Steps Completed:**
+
+1. **Installed GitHub CLI (gh v2.86.0)**
+   - Downloaded from official releases
+   - Installed to `~/bin/gh`
+
+2. **Committed all project files**
+   - `index.html`, `styles.css`, `script.js`, `data.js`
+   - `PROJECT_NOTES.md`
+
+3. **Created GitHub repository**
+   ```bash
+   gh repo create food-system-infographic --public --source=. --push
+   ```
+
+4. **Enabled GitHub Pages**
+   ```bash
+   gh api repos/joelmcclurg/food-system-infographic/pages -X POST \
+     -f "source[branch]=main" -f "source[path]=/"
+   ```
+
+**Configuration:**
+- Source branch: `main`
+- Source path: `/` (root)
+- HTTPS enforced: Yes
+
+### Embedding in Substack
+
+Substack has limited native embed support. Options:
+
+1. **Link directly** (most reliable for full interactivity)
+   - Just paste the URL in your Substack post
+   - Example: "Explore the interactive infographic: [link]"
+
+2. **Embed as iframe** (may have display limitations)
+   ```html
+   <iframe src="https://joelmcclurg.github.io/food-system-infographic/"
+           width="100%" height="800" frameborder="0"></iframe>
+   ```
+   - Note: Substack may not render iframes from all sources
+
+3. **Screenshot + link** (fallback)
+   - Take a compelling screenshot of the visualization
+   - Link to full interactive version
+
+**Recommended approach:** Link directly with a compelling description. The scrollytelling experience works best at full page size.
+
+---
+
+### Future Deployment Updates
+
+To update the live site after making changes:
+
 ```bash
-cp ~/.claude-personal/plans/tingly-knitting-pearl.md ~/food-system-infographic/PROJECT_NOTES.md
+cd ~/food-system-infographic
+git add .
+git commit -m "Description of changes"
+git push
 ```
 
-**Result:**
-- `/Users/colleenmcclurg/food-system-infographic/PROJECT_NOTES.md` becomes the canonical location
-- Future agents working on the project will find it alongside the code
+GitHub Pages will automatically rebuild and deploy within minutes.
