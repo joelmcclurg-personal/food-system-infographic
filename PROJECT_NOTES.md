@@ -433,6 +433,98 @@ Revised language throughout to clarify that farmers are victims of the system, n
 
 ---
 
+## Recent Changes (February 2026)
+
+### Legend Fix - Commit `37a9a7f`
+
+**Issue:** Legend colors were not updating when viewing the Alternative System. The legend dots always showed Current System colors (red/brown) even when the Alternative System (green/teal) was active.
+
+**Fix:** Updated CSS to dynamically change legend dot colors based on active system:
+- `.alternative-active .legend-dot.externality` now shows teal (`#0ea5e9`) instead of red
+- `.alternative-active .legend-dot.outcome` now shows green (`#2f855a`) instead of dark red
+- `.alternative-active .legend-dot.production` now shows green (`#38a169`) instead of brown
+
+**Also fixed:** Changed legend label "Externalities" → "Impacts" to be more neutral (works for both systems—negative externalities in current system, positive impacts in alternative).
+
+---
+
+### Social/OG Meta Tags
+
+Added Open Graph and Twitter Card meta tags for social sharing previews.
+
+**Files modified:**
+- `index.html`: Added meta tags in `<head>`
+- `og-image.svg`: Created placeholder social card image (1200x630)
+
+**Meta tags added:**
+```html
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="The $20 Billion Food System Built to Collapse">
+<meta property="og:description" content="An interactive visualization of how U.S. farm subsidies create a food system designed for extraction—and what the alternative looks like.">
+<meta property="og:image" content="https://joelmcclurg-personal.github.io/food-system-infographic/og-image.png">
+<meta property="og:url" content="https://joelmcclurg-personal.github.io/food-system-infographic/">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The $20 Billion Food System Built to Collapse">
+<meta name="twitter:description" content="Interactive visualization: Follow the money from farm subsidies to system collapse—and see the regenerative alternative.">
+<meta name="twitter:image" content="https://joelmcclurg-personal.github.io/food-system-infographic/og-image.png">
+```
+
+**Image specifications:**
+- Recommended dimensions: 1200x630px
+- Currently using SVG placeholder—convert to PNG before deploying
+- To convert: Open `og-image.svg` in browser, screenshot, or use Inkscape/Figma to export
+
+**Verification tools (use after deploying):**
+- Facebook: https://developers.facebook.com/tools/debug/
+- Twitter: https://cards-dev.twitter.com/validator
+- LinkedIn: https://www.linkedin.com/post-inspector/
+
+**TODO:** The meta tags reference `og-image.png`. Before deploying:
+- [ ] Export `og-image.svg` to PNG at 1200x630px (open in browser and screenshot, or use Inkscape/Figma)
+- [ ] Save as `og-image.png` in project root
+- [ ] Commit and push
+- [ ] Verify with Facebook Sharing Debugger / Twitter Card Validator
+
+---
+
+## Professional Assessment Summary
+
+### Overall Grade: B+/A-
+*For individual expert work; this is strong portfolio-level material*
+
+### Strengths
+
+1. **Narrative Architecture** - The scrollytelling structure is compelling: hook → follow the money → production → externalities → fragility → collapse → alternative. This follows best practices for long-form data journalism.
+
+2. **Toggle Mechanism** - The dual-system toggle is genuinely innovative. Most scrollytelling pieces are linear; this allows comparison while maintaining narrative flow.
+
+3. **Progressive Disclosure** - Information reveals at scroll pace, preventing overwhelm. Detail panels provide depth without cluttering the main flow.
+
+4. **Accessibility** - Skip links, keyboard navigation, ARIA labels, reduced-motion support. Better than many professional publications.
+
+5. **Data Integrity** - Claims are sourced (Zumkehr & Campbell, USDA, MIT Limits to Growth). Success stories (Geisinger, Brown's Ranch, Vermont Farm to Plate) are verifiable.
+
+### Gaps vs. Major Publications
+
+1. **Data Visualization Density** - NYT/WaPo/Guardian pieces often pack more visual data (charts, sparklines, small multiples). This piece prioritizes narrative clarity over data density—a valid choice for the audience.
+
+2. **Mobile Optimization** - Functional but not optimized. Major publications invest heavily in mobile-first design and touch interactions.
+
+3. **Motion Design** - Transitions are functional but not polished. Top-tier scrollytelling has choreographed animations with easing curves.
+
+4. **Custom Illustration** - SVG nodes are clean but simple. Major publications often commission custom illustration.
+
+### Positioning
+
+**Strong for Substack audience.** This signals serious investment in the topic without requiring publication-level resources. The toggle mechanism and accessibility features differentiate it from typical blog posts.
+
+**Portfolio value:** Demonstrates systems thinking, data visualization competency, and ability to execute complex interactive projects solo.
+
+---
+
 ## Deployment (February 2026)
 
 ### GitHub Pages Deployment
@@ -502,3 +594,25 @@ git push
 ```
 
 GitHub Pages will automatically rebuild and deploy within minutes.
+
+---
+
+### Language Edits (February 2026) - Commit `ca3f6dd`
+
+Softened language throughout to be more evidence-based and less conspiratorial, per editorial review.
+
+**Changes made:**
+
+| File | Original | Updated |
+|------|----------|---------|
+| `index.html:98` | "a rigged system" | "a system structured to favor consolidation" |
+| `index.html:98` | "pocket 78%" | "receive 78%" |
+| `index.html:98` | "reap billions" | "generate billions" |
+| `index.html:119` | "forced to grow" | "incentivized to grow" |
+| `index.html:11` | "designed for extraction" | "prioritizes consolidation over sustainability" |
+| `data.js:36` | "traps farmers in a system" | "creates conditions where" |
+| `data.js:88` | "forced to grow" | "incentivized to grow" |
+| `data.js:96` | "traps farmers in a cycle" | "creates a cycle" |
+| `data.js:149` | "brutal, and intentional" | "disheartening for small producers" |
+
+**Rationale:** Avoid language that sounds conspiratorial or accusatory. Keep "lobbying" references (factual and documented). Focus on describing systemic incentives rather than implying intentional manipulation.
