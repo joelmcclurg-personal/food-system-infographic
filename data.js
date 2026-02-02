@@ -33,7 +33,7 @@ const systemData = {
                             <li>Subsidy formulas are based on acreage and historical production, so larger operations receive larger payments</li>
                             <li>The largest 10% of farms receive 78% of all subsidy payments</li>
                         </ul>
-                        <p><strong>The Concentration Effect:</strong> Large corporate farming operations with over $1 million in sales capture approximately 60% of commodity payments. Meanwhile, family farmers growing fruits, vegetables, and other specialty crops receive minimal direct support. The incentive structure doesn't just favor commodity production—it traps farmers in a system where growing anything else is economically irrational.</p>
+                        <p><strong>The Concentration Effect:</strong> Large corporate farming operations with over $1 million in sales capture approximately 60% of commodity payments. Meanwhile, family farmers growing fruits, vegetables, and other specialty crops receive minimal direct support. The incentive structure doesn't just favor commodity production—it creates conditions where growing anything else is economically irrational.</p>
                         <p class="source">Sources: USDA Economic Research Service, Environmental Working Group Farm Subsidy Database</p>
                     `
                 }
@@ -85,7 +85,7 @@ const systemData = {
                 detail: {
                     title: 'Industrial Monoculture',
                     content: `
-                        <p>Industrial monoculture—the practice of growing a single crop repeatedly over vast areas—dominates American agriculture. Farmers are forced to grow what the system incentivizes, not what their land can sustainably support. When corn costs less to buy than to grow, the entire food system reorganizes around using as much of it as possible. This isn't a market failure or a farmer's choice—it's a policy outcome. And policy can change.</p>
+                        <p>Industrial monoculture—the practice of growing a single crop repeatedly over vast areas—dominates American agriculture. Farmers are incentivized to grow what the system rewards, not what their land can sustainably support. When corn costs less to buy than to grow, the entire food system reorganizes around using as much of it as possible. This isn't a market failure or a farmer's choice—it's a policy outcome. And policy can change.</p>
                         <p><strong>The Scale:</strong></p>
                         <ul>
                             <li>Corn and soybeans together cover approximately 180 million acres annually</li>
@@ -93,7 +93,7 @@ const systemData = {
                             <li>Over 70% of processed foods contain corn or soy derivatives (high-fructose corn syrup, soybean oil, corn starch, lecithin)</li>
                         </ul>
                         <p><strong>The CAFO Connection:</strong> Artificially cheap corn makes Concentrated Animal Feeding Operations (CAFOs) economically viable. CAFOs are industrial facilities where thousands of animals (cattle, hogs, or poultry) are confined in enclosed spaces and fed grain-based diets rather than being raised on pasture. When feed costs drop below natural production costs, it becomes profitable to concentrate animals in facilities designed for maximum throughput rather than animal welfare or environmental sustainability.</p>
-                        <p><strong>Input Dependencies:</strong> The system traps farmers in a cycle of dependency. Growing the same crop year after year without rotation or cover crops depletes soil nutrients and disrupts natural pest cycles. Without diverse plantings to fix nitrogen, suppress weeds, and break pest and disease cycles, the land cannot replenish itself. Farmers become dependent on purchasing ever-more-expensive inputs from the same corporations that profit from the system:</p>
+                        <p><strong>Input Dependencies:</strong> The system creates a cycle of dependency. Growing the same crop year after year without rotation or cover crops depletes soil nutrients and disrupts natural pest cycles. Without diverse plantings to fix nitrogen, suppress weeds, and break pest and disease cycles, the land cannot replenish itself. Farmers become dependent on purchasing ever-more-expensive inputs from the same corporations that profit from the system:</p>
                         <ul>
                             <li>Synthetic nitrogen fertilizer (derived from natural gas)</li>
                             <li>Pesticides and herbicides</li>
@@ -146,7 +146,7 @@ const systemData = {
                     title: 'Economic Extraction',
                     content: `
                         <p>Here is American agriculture's central paradox: the people who grow the nation's food often cannot afford to eat. In 2022, the median farm household earned negative $1,000 from farming operations. Not low income, negative income. The families feeding America survive on off-farm jobs, and nearly a third rely on SNAP (food stamps) to put food on their own tables. This isn't a market failure or bad luck. It's the predictable result of a system designed to extract wealth from rural communities and concentrate it elsewhere.</p>
-                        <p><strong>The Cost-Price Squeeze:</strong> Farmers are caught between rising costs they cannot control and falling prices they cannot negotiate. On one side: seed, fertilizer, equipment, and land costs that climb relentlessly. On the other: commodity prices set by global markets and a handful of buyers. The math is brutal, and intentional.</p>
+                        <p><strong>The Cost-Price Squeeze:</strong> Farmers are caught between rising costs they cannot control and falling prices they cannot negotiate. On one side: seed, fertilizer, equipment, and land costs that climb relentlessly. On the other: commodity prices set by global markets and a handful of buyers. The math is disheartening for small producers.</p>
                         <ul>
                             <li><strong>Seed prices</strong> have risen over 300% since the 1990s as consolidation reduced competition. Monsanto (now Bayer), Corteva, and Syngenta control over 60% of the global seed market. Patented seeds must be purchased new each year; saving seed is now illegal for most commercial varieties.</li>
                             <li><strong>Equipment costs</strong> have exploded. A new combine harvester costs $500,000-$800,000. John Deere alone controls 53% of the large equipment market, and their proprietary software means farmers can't repair their own machinery without dealer approval.</li>
