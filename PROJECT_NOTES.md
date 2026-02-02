@@ -437,9 +437,9 @@ Revised language throughout to clarify that farmers are victims of the system, n
 
 ### GitHub Pages Deployment
 
-**Live URL:** https://joelmcclurg.github.io/food-system-infographic/
+**Live URL:** https://joelmcclurg-personal.github.io/food-system-infographic/
 
-**Repository:** https://github.com/joelmcclurg/food-system-infographic
+**Repository:** https://github.com/joelmcclurg-personal/food-system-infographic
 
 **Deployment Steps Completed:**
 
@@ -453,12 +453,12 @@ Revised language throughout to clarify that farmers are victims of the system, n
 
 3. **Created GitHub repository**
    ```bash
-   gh repo create food-system-infographic --public --source=. --push
+   gh repo create joelmcclurg-personal/food-system-infographic --public --source=. --push
    ```
 
 4. **Enabled GitHub Pages**
    ```bash
-   gh api repos/joelmcclurg/food-system-infographic/pages -X POST \
+   gh api repos/joelmcclurg-personal/food-system-infographic/pages -X POST \
      -f "source[branch]=main" -f "source[path]=/"
    ```
 
@@ -477,7 +477,7 @@ Substack has limited native embed support. Options:
 
 2. **Embed as iframe** (may have display limitations)
    ```html
-   <iframe src="https://joelmcclurg.github.io/food-system-infographic/"
+   <iframe src="https://joelmcclurg-personal.github.io/food-system-infographic/"
            width="100%" height="800" frameborder="0"></iframe>
    ```
    - Note: Substack may not render iframes from all sources
