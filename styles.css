@@ -306,6 +306,12 @@ input:focus + .slider {
 .legend-dot.externality { background: var(--color-health); }
 .legend-dot.outcome { background: var(--color-collapse); }
 
+/* Legend Colors - Alternative System */
+.alt .legend-dot.beneficiary { background: var(--color-alt-beneficiary); }
+.alt .legend-dot.production { background: var(--color-alt-production); }
+.alt .legend-dot.externality { background: #0ea5e9; }
+.alt .legend-dot.outcome { background: var(--color-alt-positive); }
+
 /* ===================================
    Scroll Sections
    =================================== */

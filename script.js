@@ -542,6 +542,10 @@
             svg.classed('morphing', true);
             svg.classed('alt', toAlternative);
 
+            // Toggle .alt class on visualization wrapper for legend colors
+            const vizWrapper = document.querySelector('.visualization-wrapper');
+            vizWrapper.classList.toggle('alt', toAlternative);
+
             // Update toggle labels
             currentLabel.classList.toggle('active', !toAlternative);
             altLabel.classList.toggle('active', toAlternative);
