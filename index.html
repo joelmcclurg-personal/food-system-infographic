@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The $20 Billion Food System Built to Collapse</title>
+    <meta name="description" content="An interactive visualization of how U.S. farm subsidies create a food system that prioritizes consolidation over sustainability—and what the alternative looks like.">
 
     <!-- Open Graph / Social Cards -->
     <meta property="og:type" content="website">
@@ -21,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
     <!-- Skip link for accessibility -->
@@ -101,7 +102,7 @@
                 </section>
 
                 <!-- Section 2: Follow the Money -->
-                <section class="scroll-section" data-section="money" data-nodes="beneficiaries" data-connections="farm-bill-beneficiaries">
+                <section class="scroll-section" data-section="money" data-nodes="beneficiaries" data-connections="farm-bill>beneficiaries">
                     <div class="section-content">
                         <span class="section-number">02</span>
                         <h2>Follow the Money</h2>
@@ -112,7 +113,7 @@
                 </section>
 
                 <!-- Section 3: The Factory -->
-                <section class="scroll-section" data-section="factory" data-nodes="production" data-connections="beneficiaries-production">
+                <section class="scroll-section" data-section="factory" data-nodes="production" data-connections="beneficiaries>production">
                     <div class="section-content">
                         <span class="section-number">03</span>
                         <h2>The Factory</h2>
@@ -143,12 +144,12 @@
                             </div>
                         </div>
                         <p class="section-detail">A majority of Americans are overweight. 30% of farmers rely on food stamps to eat. 57 billion tons of topsoil have washed away. The same system creates disasters in public health, the economy, and the environment.</p>
-                        <p class="section-detail"><span class="section-cta">Click the node to learn more.</span></p>
+                        <p class="section-detail"><span class="section-cta">Click the nodes to learn more.</span></p>
                     </div>
                 </section>
 
                 <!-- Section 5: The Fragile Machine -->
-                <section class="scroll-section" data-section="fragility" data-nodes="fragility" data-connections="health-fragility,environment-fragility,economic-fragility">
+                <section class="scroll-section" data-section="fragility" data-nodes="fragility" data-connections="health>fragility,environment>fragility,economic>fragility">
                     <div class="section-content">
                         <span class="section-number">05</span>
                         <h2>The Fragile Machine</h2>
@@ -159,7 +160,7 @@
                 </section>
 
                 <!-- Section 6: Where This Leads -->
-                <section class="scroll-section" data-section="collapse" data-nodes="collapse" data-connections="fragility-collapse">
+                <section class="scroll-section" data-section="collapse" data-nodes="collapse" data-connections="fragility>collapse">
                     <div class="section-content">
                         <span class="section-number">06</span>
                         <h2>Where This Leads</h2>
@@ -230,6 +231,6 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/scrollama@3.2.0/scrollama.min.js"></script>
     <script src="data.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>

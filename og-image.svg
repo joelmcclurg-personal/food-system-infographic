@@ -1,0 +1,82 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for background -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <!-- Orbital ring gradient -->
+    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c53030;stop-opacity:0.3"/>
+      <stop offset="50%" style="stop-color:#b7791f;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#c53030;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Orbital rings (decorative) -->
+  <ellipse cx="850" cy="315" rx="280" ry="200" fill="none" stroke="url(#ringGradient)" stroke-width="1" opacity="0.4"/>
+  <ellipse cx="850" cy="315" rx="220" ry="160" fill="none" stroke="#b7791f" stroke-width="1" opacity="0.3"/>
+  <ellipse cx="850" cy="315" rx="160" ry="115" fill="none" stroke="#c53030" stroke-width="1" opacity="0.4"/>
+  <ellipse cx="850" cy="315" rx="100" ry="70" fill="none" stroke="#6b46c1" stroke-width="1" opacity="0.3"/>
+
+  <!-- Connecting lines (simplified flow) -->
+  <path d="M850 315 L750 220" stroke="#6b46c1" stroke-width="2" opacity="0.5"/>
+  <path d="M850 315 L950 220" stroke="#b7791f" stroke-width="2" opacity="0.5"/>
+  <path d="M850 315 L750 410" stroke="#c53030" stroke-width="2" opacity="0.5"/>
+  <path d="M850 315 L950 410" stroke="#c53030" stroke-width="2" opacity="0.5"/>
+
+  <!-- Center node (Farm Bill) -->
+  <circle cx="850" cy="315" r="45" fill="#2c5282"/>
+  <text x="850" y="310" font-family="Inter, system-ui, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="600">FARM</text>
+  <text x="850" y="325" font-family="Inter, system-ui, sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="600">BILL</text>
+
+  <!-- Surrounding nodes -->
+  <!-- Beneficiaries -->
+  <circle cx="750" cy="220" r="28" fill="#6b46c1"/>
+  <text x="750" y="224" font-family="Inter, system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">CORPS</text>
+
+  <!-- Production -->
+  <circle cx="950" cy="220" r="28" fill="#b7791f"/>
+  <text x="950" y="224" font-family="Inter, system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">FACTORY</text>
+
+  <!-- Externalities -->
+  <circle cx="750" cy="410" r="28" fill="#c53030"/>
+  <text x="750" y="414" font-family="Inter, system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">HEALTH</text>
+
+  <circle cx="950" cy="410" r="28" fill="#c53030"/>
+  <text x="950" y="414" font-family="Inter, system-ui, sans-serif" font-size="9" fill="white" text-anchor="middle">ENVIRON</text>
+
+  <!-- Outer node (collapse) -->
+  <circle cx="1050" cy="315" r="32" fill="#9b2c2c"/>
+  <text x="1050" y="312" font-family="Inter, system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle">SYSTEM</text>
+  <text x="1050" y="324" font-family="Inter, system-ui, sans-serif" font-size="8" fill="white" text-anchor="middle">FRAGILITY</text>
+
+  <!-- Title text -->
+  <text x="60" y="200" font-family="Inter, system-ui, sans-serif" font-size="42" fill="white" font-weight="700">
+    <tspan x="60" dy="0">The $20 Billion</tspan>
+    <tspan x="60" dy="52">Food System</tspan>
+    <tspan x="60" dy="52">Built to Collapse</tspan>
+  </text>
+
+  <!-- Subtitle -->
+  <text x="60" y="380" font-family="Inter, system-ui, sans-serif" font-size="18" fill="#a0aec0" font-weight="400">
+    <tspan x="60" dy="0">Follow the money from farm subsidies</tspan>
+    <tspan x="60" dy="26">to system collapse—and see the</tspan>
+    <tspan x="60" dy="26">regenerative alternative.</tspan>
+  </text>
+
+  <!-- Interactive badge -->
+  <rect x="60" y="480" width="140" height="32" rx="16" fill="#48bb78"/>
+  <text x="130" y="501" font-family="Inter, system-ui, sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="600">INTERACTIVE</text>
+
+  <!-- Divider line -->
+  <line x1="60" y1="540" x2="540" y2="540" stroke="#4a5568" stroke-width="1" opacity="0.5"/>
+
+  <!-- Footer note -->
+  <text x="60" y="580" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#718096">
+    Data from USDA, EPA, CDC, and peer-reviewed research
+  </text>
+</svg>

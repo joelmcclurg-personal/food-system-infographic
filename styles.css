@@ -306,7 +306,9 @@ input:focus + .slider {
 .legend-dot.externality { background: var(--color-health); }
 .legend-dot.outcome { background: var(--color-collapse); }
 
-/* Legend Colors - Alternative System */
+/* Legend Colors - Alternative System
+   NOTE: .alt class is toggled on .visualization-wrapper (shared ancestor of SVG and legend).
+   See toggleSystem() in script.js. */
 .alt .legend-dot.beneficiary { background: var(--color-alt-beneficiary); }
 .alt .legend-dot.production { background: var(--color-alt-production); }
 .alt .legend-dot.externality { background: #0ea5e9; }
@@ -520,6 +522,11 @@ input:focus + .slider {
     stroke-width: 1;
     stroke-dasharray: 4 4;
     opacity: 0.5;
+    transition: opacity var(--transition-normal) ease;
+}
+
+svg.alt .orbital-ring {
+    opacity: 0 !important;
 }
 
 .node-group {
@@ -603,14 +610,17 @@ input:focus + .slider {
 /* Connection Lines */
 .connection {
     fill: none;
-    stroke: var(--color-border);
+    stroke: none;
     stroke-width: 2;
     opacity: 0;
+    visibility: hidden;
     transition: opacity var(--transition-normal) ease, stroke var(--transition-normal) ease;
 }
 
 .connection.visible {
+    stroke: var(--color-border);
     opacity: 0.6;
+    visibility: visible;
 }
 
 .connection.highlighted {

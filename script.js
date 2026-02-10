@@ -81,7 +81,7 @@
                 .attr('cx', config.centerX)
                 .attr('cy', config.centerY)
                 .attr('r', radius)
-                .style('opacity', 0.4 - i * 0.06);
+                .attr('opacity', 0.4 - i * 0.06);
         });
 
         // Connections layer
@@ -203,7 +203,8 @@
                 const perpY = dx / dist * offset;
 
                 return `M ${from.x} ${from.y} Q ${midX + perpX} ${midY + perpY} ${to.x} ${to.y}`;
-            });
+            })
+            .style('display', 'none');
     }
 
     // ===================================
@@ -236,22 +237,23 @@
 
         const ids = connectionIds.split(',').map(id => id.trim());
         ids.forEach(id => {
-            const [from, to] = id.split('-');
+            const [from, to] = id.split('>');
             revealedConnections.add(id);
 
-            svg.selectAll('.connection')
+            const matched = svg.selectAll('.connection')
                 .filter(function() {
                     const connFrom = d3.select(this).attr('data-from');
                     const connTo = d3.select(this).attr('data-to');
                     return (connFrom === from && connTo === to) ||
                            (connFrom === to && connTo === from);
-                })
+                });
+            matched.style('display', null)
                 .classed('visible', true)
                 .classed('drawing', true);
 
-            // Remove drawing class after animation
+            // Remove drawing class after animation (scoped to matched elements)
             setTimeout(() => {
-                svg.selectAll('.connection.drawing').classed('drawing', false);
+                matched.classed('drawing', false);
             }, 500);
         });
     }
@@ -273,12 +275,12 @@
 
         const sections = [
             { num: '01', nodes: 'farm-bill', title: 'Rewriting the Rules', description: 'The Farm Bill gets rewritten. This time, the money flows to farmers who rebuild soil, not corporations who deplete it. Policy stops subsidizing extraction and starts investing in regeneration.' },
-            { num: '02', nodes: 'beneficiaries', conn: 'farm-bill-beneficiaries', title: 'Money Stays Local', description: 'Instead of 78% flowing to mega-operations, support goes to small and mid-sized farmers who actually live in their communities. When farmers thrive, main streets come back to life. Money circulates locally instead of being extracted to distant shareholders.' },
-            { num: '03', nodes: 'production', conn: 'beneficiaries-production', title: 'Farming That Gives Back', description: 'Forget the 180-million-acre corn monoculture. Diverse crops. Rotational grazing. Practices that build topsoil instead of stripping it. Animals eat what they\'re designed to eat. Farms become ecosystems, not factories.' },
+            { num: '02', nodes: 'beneficiaries', conn: 'farm-bill>beneficiaries', title: 'Money Stays Local', description: 'Instead of 78% flowing to mega-operations, support goes to small and mid-sized farmers who actually live in their communities. When farmers thrive, main streets come back to life. Money circulates locally instead of being extracted to distant shareholders.' },
+            { num: '03', nodes: 'production', conn: 'beneficiaries>production', title: 'Farming That Gives Back', description: 'Forget the 180-million-acre corn monoculture. Diverse crops. Rotational grazing. Practices that build topsoil instead of stripping it. Animals eat what they\'re designed to eat. Farms become ecosystems, not factories.' },
             { num: '04', nodes: 'health,environment,economic', title: 'The Payoff', description: 'Real food replaces processed corn derivatives. Diet-related disease drops. Aquifers recharge. Pollinators return. Rural hospitals stay open because communities can afford to live there. The externalities flip from costs to benefits.' },
-            { num: '05', nodes: 'fragility', conn: 'health-fragility,environment-fragility,economic-fragility', title: 'Built to Bend', description: 'Regional food networks replace continental supply chains. When one farm struggles, neighbors adapt—not collapse. Three days of inventory becomes three months of local reserves. The system bends instead of breaks.' },
-            { num: '06', nodes: 'collapse', conn: 'fragility-collapse', title: 'Systems That Last', description: 'MIT\'s collapse trajectory gets rewritten. Soil regenerates faster than it erodes. Aquifers refill. Carbon returns to the ground. This isn\'t wishful thinking—it\'s the math of systems that give back more than they take.' },
-            { num: '07', showToggle: true, title: 'The Current System', description: 'This future is possible. But first, see the system we inherited—and why it was designed to fail.' }
+            { num: '05', nodes: 'fragility', conn: 'health>fragility,environment>fragility,economic>fragility', title: 'Built to Bend', description: 'Regional food networks replace continental supply chains. When one farm struggles, neighbors adapt—not collapse. Three days of inventory becomes three months of local reserves. The system bends instead of breaks.' },
+            { num: '06', nodes: 'collapse', conn: 'fragility>collapse', title: 'Systems That Last', description: 'MIT\'s collapse trajectory gets rewritten. Soil regenerates faster than it erodes. Aquifers refill. Carbon returns to the ground. This isn\'t wishful thinking—it\'s the math of systems that give back more than they take.' },
+            { num: '07', showToggle: true, title: 'The Current System', description: 'This future is possible. But first, see the system we inherited\u2014and why it was designed to fail.', description2: 'Toggle above to see why the current system we\'ve built is on the verge of collapse.' }
         ];
 
         sections.forEach(cfg => {
@@ -288,12 +290,16 @@
             if (cfg.conn) section.dataset.connections = cfg.conn;
             if (cfg.showToggle) section.dataset.showToggle = 'true';
 
+            const plural = cfg.nodes && cfg.nodes.includes(',') ? 'nodes' : 'node';
+            const ctaLine = cfg.nodes ? `<p class="section-detail"><span class="section-cta">Click the ${plural} to learn more.</span></p>` : '';
+            const desc2 = cfg.description2 ? `<p>${cfg.description2}</p>` : '';
             section.innerHTML = `
                 <div class="section-content">
                     <span class="section-number">${cfg.num}</span>
                     <h2>${cfg.title}</h2>
                     <p>${cfg.description}</p>
-                    <p class="section-detail"><span class="section-cta">Click the node to learn more.</span></p>
+                    ${desc2}
+                    ${ctaLine}
                 </div>
             `;
             altContainer.appendChild(section);
@@ -338,13 +344,10 @@
                     scrollamaAlt.resize();
                 }, 200));
 
-                console.log('Dual Scrollama initialized');
             } catch (e) {
-                console.warn('Scrollama failed, using fallback:', e);
                 initIntersectionObserver();
             }
         } else {
-            console.warn('Scrollama not loaded, using IntersectionObserver fallback');
             initIntersectionObserver();
         }
     }
@@ -582,6 +585,8 @@
             svg.selectAll('.node-group').classed('visible', false);
             svg.selectAll('.connection').classed('visible', false);
 
+            svg.select('.rings-layer').style('display', toAlternative ? 'none' : null);
+
             // Update nodes with new data
             updateNodesForSystem(data);
 
@@ -641,8 +646,8 @@
                 // Update aria-label
                 nodeGroup.attr('aria-label', `${nodeData.label}: ${nodeData.stat}`);
 
-                // Update click handler with new detail data
-                nodeGroup.on('click', function(event) {
+                // Update click and keydown handlers with new detail data
+                function showDetail(event) {
                     event.stopPropagation();
                     if (nodeData.detail) {
                         detailTitle.textContent = nodeData.detail.title;
@@ -650,6 +655,13 @@
                         detailPanel.classList.add('active');
                         detailPanel.setAttribute('aria-hidden', 'false');
                         closeDetail.focus();
+                    }
+                }
+                nodeGroup.on('click', showDetail);
+                nodeGroup.on('keydown', function(event) {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        showDetail(event);
                     }
                 });
 
@@ -692,10 +704,20 @@
         // Focus trap in detail panel
         detailPanel.addEventListener('keydown', function(e) {
             if (e.key === 'Tab') {
-                // Simple focus trap: keep focus on close button
-                if (document.activeElement !== closeDetail) {
-                    e.preventDefault();
-                    closeDetail.focus();
+                const focusable = detailPanel.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])');
+                if (focusable.length === 0) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey) {
+                    if (document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    }
+                } else {
+                    if (document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
                 }
             }
         });
@@ -736,5 +758,6 @@
     } else {
         init();
     }
+
 
 })();
