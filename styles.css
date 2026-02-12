@@ -865,6 +865,12 @@ footer {
     .scroll-section {
         min-height: 160vh;
     }
+
+    .scroll-sections-alt {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 /* ===================================
