@@ -859,6 +859,15 @@ footer {
 }
 
 /* ===================================
+   Mobile: increase spacing between scroll sections
+   =================================== */
+@media (max-width: 767px) {
+    .scroll-section {
+        min-height: 160vh;
+    }
+}
+
+/* ===================================
    Desktop Enhancements (768px+)
    =================================== */
 @media (min-width: 768px) {
