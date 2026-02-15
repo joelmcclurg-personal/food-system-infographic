@@ -87,6 +87,9 @@ body {
     justify-content: center;
     padding: 24px;
     background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-subtle) 100%);
+    position: relative;
+    z-index: 0;
+    will-change: opacity, transform;
 }
 
 .hero-content {
@@ -863,7 +866,7 @@ footer {
    =================================== */
 @media (max-width: 767px) {
     .scroll-section {
-        min-height: 160vh;
+        min-height: 100vh;
     }
 
     .scroll-sections-alt {

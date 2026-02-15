@@ -46,6 +46,18 @@
     // Initialization
     // ===================================
     function init() {
+        // Fade hero on scroll
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const heroHeight = hero.offsetHeight;
+                const progress = Math.min(scrollY / (heroHeight * 0.6), 1);
+                hero.style.opacity = 1 - progress;
+                hero.style.transform = `translateY(${-scrollY * 0.3}px)`;
+            }, { passive: true });
+        }
+
         setupSVG();
         renderAllNodes(systemData.current);
         renderAllConnections(systemData.current);
