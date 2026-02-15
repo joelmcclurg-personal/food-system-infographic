@@ -616,3 +616,39 @@ Softened language throughout to be more evidence-based and less conspiratorial, 
 | `data.js:149` | "brutal, and intentional" | "disheartening for small producers" |
 
 **Rationale:** Avoid language that sounds conspiratorial or accusatory. Keep "lobbying" references (factual and documented). Focus on describing systemic incentives rather than implying intentional manipulation.
+
+---
+
+### Mobile Fix: Alternative System Scroll Text Boxes - Commit `2941aa4`
+
+**Issue:** On mobile devices (under 768px), the "Alternative System" scrollytelling text boxes were very narrow instead of spanning the full screen width. The "Current System" text boxes displayed correctly at full width.
+
+**Root cause:** The `.scroll-sections-alt` class had `width: 45%` and `padding-left: 40px` set in its base styles (`styles.css` line ~418). These base styles exist for the desktop side-by-side layout where the current system scroll panels sit on the right and alternative system panels sit on the left, each taking roughly half the viewport. The "Current System" `.scroll-sections` class had no explicit width in its base styles (it naturally fills 100% on mobile), but the alt version was locked at 45% on all screen sizes because there was no mobile override.
+
+**Fix applied to `styles.css`:** Added three properties to the existing `@media (max-width: 767px)` block (line ~864):
+
+```css
+@media (max-width: 767px) {
+    .scroll-section {
+        min-height: 160vh;
+    }
+
+    .scroll-sections-alt {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+```
+
+**What each property does:**
+- `width: 100%` — Overrides the desktop `width: 45%`, making the alt text boxes span the full viewport width on mobile
+- `padding-left: 0` — Removes the `padding-left: 40px` from the desktop layout that was adding unnecessary left indentation on mobile
+- `padding-right: 0` — Ensures symmetrical edge-to-edge layout
+
+**Why this works:** On desktop (768px+), `.scroll-sections-alt` keeps its `width: 45%` and `padding-left: 40px` for the side-by-side layout. On mobile (under 768px), the new override makes it full-width, matching the behavior of `.scroll-sections` (the Current System panels), which already fills 100% by default.
+
+**Verification:**
+- Mobile/DevTools (< 768px): Alternative System text boxes now span full width, matching Current System
+- Desktop (768px+): No change — side-by-side layout is unaffected
+- Toggle between systems: Both directions render correctly
